@@ -2,6 +2,7 @@
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager 
 from django.db import models 
+from cloudinary.models import CloudinaryField
 class UserManager(BaseUserManager): 
       def create_user(self, email, password=None): 
             if not email: 
@@ -40,7 +41,7 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     cooking_time = models.CharField(max_length=20)
     diffifulty_level = models.CharField(choices=choices, max_length=20)
-    image_upload = models.FileField(upload_to='recipes/', null=True, blank=True)
+    image_upload = CloudinaryField('image_upload', null=True, blank=True)
 
 class Wishlist(models.Model):
      user= models.ForeignKey("User",on_delete=models.CASCADE)   
