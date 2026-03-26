@@ -1,0 +1,1 @@
+web: gunicorn recipe_sharing_platform.wsgi:application --bind 0.0.0:$PORT --workers 3
